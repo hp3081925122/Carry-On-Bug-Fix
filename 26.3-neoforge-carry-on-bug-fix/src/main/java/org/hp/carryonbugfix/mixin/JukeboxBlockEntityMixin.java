@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 /**
- * 阻止 Carry On 抱起播放中唱片机执行 removeBlockEntity 时触发 setRemoved 广播 1011 停歌事件，保护客户端活体声道无缝认领。
+ * 阻止 Carry On 抱起播放中唱片机时服务端与客户端双端 setRemoved() 触发 1011 停歌事件，保护客户端活体声道无缝认领。
  */
 @Mixin(value = JukeboxBlockEntity.class, remap = false)
 public abstract class JukeboxBlockEntityMixin {
@@ -23,7 +23,7 @@ public abstract class JukeboxBlockEntityMixin {
             )
     )
     private void carryOnBugFix$suppressStopGameEvent(Level level, Holder<GameEvent> event, BlockPos pos, GameEvent.Context context) {
-        if (!PortableJukeboxHandler.isSuppressingStopEvent()) {
+        if (!PortableJukeboxHandler.shouldSuppressStopEvent(level, pos)) {
             level.gameEvent(event, pos, context);
         }
     }
@@ -36,7 +36,7 @@ public abstract class JukeboxBlockEntityMixin {
             )
     )
     private void carryOnBugFix$suppressStopLevelEvent(Level level, int type, BlockPos pos, int data) {
-        if (!PortableJukeboxHandler.isSuppressingStopEvent()) {
+        if (!PortableJukeboxHandler.shouldSuppressStopEvent(level, pos)) {
             level.levelEvent(type, pos, data);
         }
     }

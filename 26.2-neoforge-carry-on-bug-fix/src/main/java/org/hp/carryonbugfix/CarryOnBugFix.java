@@ -9,6 +9,7 @@ import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.hp.carryonbugfix.network.JukeboxHandoffPayload;
+import org.hp.carryonbugfix.network.JukeboxPickupPayload;
 
 /**
  * 模组入口：注册配置、可选网络通道、客户端处理器及开发环境 GameTest。
@@ -36,6 +37,11 @@ public final class CarryOnBugFix {
                 JukeboxHandoffPayload.TYPE,
                 JukeboxHandoffPayload.STREAM_CODEC,
                 JukeboxHandoffPayload::handle
+        );
+        registrar.playToClient(
+                JukeboxPickupPayload.TYPE,
+                JukeboxPickupPayload.STREAM_CODEC,
+                JukeboxPickupPayload::handle
         );
     }
 

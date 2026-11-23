@@ -38,6 +38,13 @@ neoForge {
         client {
             client()
             systemProperty 'neoforge.enabledGameTestNamespaces', project.mod_id
+            // 透传自测工具的窗口隐藏和自动进档属性，避免普通启动受影响。
+            if (System.getProperty('selfmcp.window') != null) {
+                systemProperty 'selfmcp.window', System.getProperty('selfmcp.window')
+            }
+            if (System.getProperty('selfmcp.world') != null) {
+                systemProperty 'selfmcp.world', System.getProperty('selfmcp.world')
+            }
         }
 
         server {

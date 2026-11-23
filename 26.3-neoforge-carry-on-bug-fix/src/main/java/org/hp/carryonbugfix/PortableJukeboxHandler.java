@@ -22,6 +22,7 @@ import net.minecraft.world.phys.AABB;
 import net.neoforged.neoforge.network.PacketDistributor;
 import org.hp.carryonbugfix.mixin.CarryOnDataAccessor;
 import org.hp.carryonbugfix.network.JukeboxHandoffPayload;
+import org.hp.carryonbugfix.network.JukeboxPickupPayload;
 import org.slf4j.Logger;
 import tschipp.carryon.common.carry.CarryOnData;
 import tschipp.carryon.common.carry.CarryOnData.CarryType;
@@ -30,14 +31,16 @@ import tschipp.carryon.common.carry.CarryOnDataManager;
 import javax.annotation.Nullable;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
+import java.util.function.Predicate;
 
 /**
- * 服务端便携唱片机管理器：在搬运播放中的唱片机时阻止移除停歌事件、推进播放进度，并在放下时无缝交接声源。
+ * 服务端便携唱片机管理器：在搬运播放中的唱片机时先发包预认领客户端活体声道、抑制双端 setRemoved 停歌事件、推进播放进度，并在放下时无缝交接声源。
  */
 public final class PortableJukeboxHandler {
     private static final Logger LOGGER = LogUtils.getLogger();
     private static final AtomicLong SESSION_COUNTER = new AtomicLong(1L);
     private static final ThreadLocal<Boolean> SUPPRESS_STOP_EVENT = new ThreadLocal<>();
+    private static volatile Predicate<BlockPos> clientStopSuppressor = pos -> false;
 
     public static final String TAG_ROOT = "carryOnBugFixJukebox";
     public static final String KEY_PLAYING = "playing";
@@ -53,7 +56,14 @@ public final class PortableJukeboxHandler {
     private PortableJukeboxHandler() {
     }
 
-    public static boolean isSuppressingStopEvent() {
+    public static void setClientStopSuppressor(Predicate<BlockPos> suppressor) {
+        clientStopSuppressor = suppressor;
+    }
+
+    public static boolean shouldSuppressStopEvent(@Nullable Level level, BlockPos pos) {
+        if (level != null && level.isClientSide()) {
+            return clientStopSuppressor.test(pos);
+        }
         return Boolean.TRUE.equals(SUPPRESS_STOP_EVENT.get());
     }
 
@@ -62,7 +72,8 @@ public final class PortableJukeboxHandler {
     }
 
     /**
-     * 在 Carry On 将方块写入 CarryOnData 后记录播放中唱片机的实时状态，并标记跳过紧随其后的 setRemoved 停歌广播。
+     * 在 Carry On 将方块写入 CarryOnData 后记录播放中唱片机的实时状态，
+     * 先于 removeBlock 发出客户端预认领包并标记抑制紧随其后的 setRemoved 停歌广播。
      */
     public static void onAfterSetBlock(ServerPlayer player, BlockPos originPos, BlockState state, @Nullable BlockEntity blockEntity, CarryOnData carry) {
         if (!CarryOnBugFixConfig.PORTABLE_JUKEBOX_ENABLED.get()) {
@@ -94,6 +105,7 @@ public final class PortableJukeboxHandler {
 
         long sessionId = SESSION_COUNTER.getAndIncrement();
         long startGameTime = player.level().getGameTime() - elapsed;
+        String dimension = player.level().dimension().identifier().toString();
 
         CompoundTag info = new CompoundTag();
         info.putBoolean(KEY_PLAYING, true);
@@ -104,11 +116,21 @@ public final class PortableJukeboxHandler {
         info.putString(KEY_SONG_ID, songId.toString());
         info.putLong(KEY_START_GAME_TIME, startGameTime);
         info.putLong(KEY_LENGTH_TICKS, lengthTicks);
-        info.putString(KEY_DIMENSION, player.level().dimension().identifier().toString());
+        info.putString(KEY_DIMENSION, dimension);
 
         CompoundTag internal = ((CarryOnDataAccessor) (Object) carry).carryOnBugFix$getInternalNbt();
         internal.put(TAG_ROOT, info);
         SUPPRESS_STOP_EVENT.set(Boolean.TRUE);
+
+        // 必须在 level.removeBlock 发送空气方块更新包前发出，保证 TCP 严格先序到达客户端完成活体声道认领
+        if (player.level() instanceof ServerLevel serverLevel) {
+            ChunkPos chunkPos = new ChunkPos(originPos.getX() >> 4, originPos.getZ() >> 4);
+            PacketDistributor.sendToPlayersTrackingChunk(
+                    serverLevel,
+                    chunkPos,
+                    new JukeboxPickupPayload(player.getId(), sessionId, originPos.immutable(), dimension)
+            );
+        }
         LOGGER.debug("Captured playing jukebox song={} elapsed={} session={} at {}", songId, elapsed, sessionId, originPos);
     }
 

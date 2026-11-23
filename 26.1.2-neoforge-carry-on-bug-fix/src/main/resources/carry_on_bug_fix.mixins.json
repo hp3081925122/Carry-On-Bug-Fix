@@ -3,11 +3,15 @@
   "minVersion": "0.8",
   "package": "org.hp.carryonbugfix.mixin",
   "plugin": "org.hp.carryonbugfix.CarryOnExtendMixinPlugin",
-  "compatibilityLevel": "JAVA_17",
-  "refmap": "carry_on_bug_fix.refmap.json",
+  "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "CarryOnCommonMixin",
+    "CarryOnDataAccessor",
     "CommonEventsMixin",
+    "EntityAccessor",
     "EntityThrowHandlerMixin",
+    "JukeboxBlockEntityMixin",
+    "ListHandlerMixin",
     "PickupHandlerMixin",
     "PlacementHandlerMixin"
   ],
@@ -16,6 +20,10 @@
   },
   "client": [
     "CarriedObjectRenderMixin",
-    "CarryRenderHelperMixin"
+    "CarryRenderHelperMixin",
+    "ClientLevelAccessor",
+    "LevelEventHandlerAccessor",
+    "SoundEngineAccessor",
+    "SoundManagerAccessor"
   ]
 }

@@ -1,19 +1,41 @@
 package org.hp.carryonbugfix.mixin;
 
+import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import org.hp.carryonbugfix.CarryOnBugFixConfig;
 import org.hp.carryonbugfix.PassengerStackValidator;
+import org.hp.carryonbugfix.VehicleBoardingHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import tschipp.carryon.events.CommonEvents;
 
 /**
- * 右键交互乘骑树中的任意乘客时自动定位至根载具实体。
+ * 扩展 Carry On 实体右键事件：支持抱着生物直接放入船/矿车，以及整组乘客连根抱起。
  */
 @Mixin(value = CommonEvents.class, remap = false)
 public abstract class CommonEventsMixin {
+    @Inject(method = "onEntityRightClick", at = @At("HEAD"), cancellable = true)
+    private static void carryOnBugFix$tryBoardVehicle(PlayerInteractEvent.EntityInteract event, CallbackInfo ci) {
+        if (event.isCanceled() || event.getLevel().isClientSide()) {
+            return;
+        }
+        Player player = event.getEntity();
+        if (!(player instanceof ServerPlayer serverPlayer)) {
+            return;
+        }
+        if (VehicleBoardingHandler.tryBoardVehicle(serverPlayer, event.getTarget())) {
+            event.setCancellationResult(InteractionResult.SUCCESS);
+            event.setCanceled(true);
+            ci.cancel();
+        }
+    }
+
     @Redirect(
             method = "onEntityRightClick",
             at = @At(

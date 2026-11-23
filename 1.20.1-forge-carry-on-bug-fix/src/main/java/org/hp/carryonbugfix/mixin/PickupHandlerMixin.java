@@ -1,28 +1,70 @@
 package org.hp.carryonbugfix.mixin;
 
+import com.mojang.logging.LogUtils;
+import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
 import org.hp.carryonbugfix.CarryOnBugFixConfig;
 import org.hp.carryonbugfix.PassengerStackValidator;
+import org.hp.carryonbugfix.PortableJukeboxHandler;
+import org.slf4j.Logger;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+import tschipp.carryon.common.carry.CarryOnData;
 import tschipp.carryon.common.carry.PickupHandler;
-import com.mojang.logging.LogUtils;
-import org.slf4j.Logger;
 
 import java.util.List;
+import java.util.function.BiFunction;
 import java.util.function.Function;
 
+/**
+ * 扩展 Carry On 抱起流程：保留乘客叠罗汉结构，以及抱起正在播放的唱片机时捕获播放进度。
+ */
 @Mixin(value = PickupHandler.class, remap = false)
 public abstract class PickupHandlerMixin {
     @Unique
     private static final Logger carryOnBugFix$LOGGER = LogUtils.getLogger();
     @Unique
     private static final ThreadLocal<Boolean> carryOnBugFix$preservePassengers = new ThreadLocal<>();
+    @Unique
+    private static final ThreadLocal<ServerPlayer> carryOnBugFix$pickupPlayer = new ThreadLocal<>();
+    @Unique
+    private static final ThreadLocal<BlockPos> carryOnBugFix$pickupPos = new ThreadLocal<>();
+
+    @Inject(method = "tryPickUpBlock", at = @At("HEAD"))
+    private static void carryOnBugFix$enterBlockPickup(ServerPlayer player, BlockPos pos, Level level, BiFunction<BlockState, BlockPos, Boolean> pickupCallback, CallbackInfoReturnable<Boolean> cir) {
+        carryOnBugFix$pickupPlayer.set(player);
+        carryOnBugFix$pickupPos.set(pos);
+    }
+
+    @Inject(method = "tryPickUpBlock", at = @At("RETURN"))
+    private static void carryOnBugFix$exitBlockPickup(ServerPlayer player, BlockPos pos, Level level, BiFunction<BlockState, BlockPos, Boolean> pickupCallback, CallbackInfoReturnable<Boolean> cir) {
+        carryOnBugFix$pickupPlayer.remove();
+        carryOnBugFix$pickupPos.remove();
+    }
+
+    @Redirect(
+            method = "tryPickUpBlock",
+            at = @At(
+                    value = "INVOKE",
+                    target = "Ltschipp/carryon/common/carry/CarryOnData;setBlock(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/entity/BlockEntity;)V"
+            )
+    )
+    private static void carryOnBugFix$captureJukebox(CarryOnData carry, BlockState state, BlockEntity blockEntity) {
+        carry.setBlock(state, blockEntity);
+        ServerPlayer player = carryOnBugFix$pickupPlayer.get();
+        BlockPos originPos = carryOnBugFix$pickupPos.get();
+        if (player != null && originPos != null) {
+            PortableJukeboxHandler.onAfterSetBlock(player, originPos, state, blockEntity, carry);
+        }
+    }
 
     @Inject(method = "tryPickupEntity", at = @At("HEAD"), cancellable = true)
     private static void carryOnBugFix$validateStack(ServerPlayer player, Entity entity, Function<Entity, Boolean> callback, CallbackInfoReturnable<Boolean> cir) {

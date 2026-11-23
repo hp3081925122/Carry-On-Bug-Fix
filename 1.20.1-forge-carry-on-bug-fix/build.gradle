@@ -95,7 +95,9 @@ dependencies {
     runtimeOnly fg.deobf("local:self_mcp-1.20.1-forge-0.3.0:0.3.0")
     runtimeOnly fg.deobf("io.github.llamalad7:mixinextras-forge:0.4.1")
     implementation fg.deobf("curse.maven:jei-238222:8778011")
-    implementation fg.deobf("curse.maven:just-enough-characters-250702:8771525")
+    if (!gradle.startParameter.taskNames.any { it.toLowerCase().contains('server') }) {
+        implementation fg.deobf("curse.maven:just-enough-characters-250702:8771525")
+    }
     implementation fg.deobf("curse.maven:jade-324717:8479276")
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }

@@ -5,8 +5,13 @@
   "plugin": "org.hp.carryonbugfix.CarryOnExtendMixinPlugin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "CarryOnCommonMixin",
+    "CarryOnDataAccessor",
     "CommonEventsMixin",
+    "EntityAccessor",
     "EntityThrowHandlerMixin",
+    "JukeboxBlockEntityMixin",
+    "ListHandlerMixin",
     "PickupHandlerMixin",
     "PlacementHandlerMixin"
   ],
@@ -14,6 +19,10 @@
     "defaultRequire": 1
   },
   "client": [
-    "CarriedObjectRenderMixin"
+    "CarriedObjectRenderMixin",
+    "ClientLevelAccessor",
+    "LevelEventHandlerAccessor",
+    "SoundEngineAccessor",
+    "SoundManagerAccessor"
   ]
 }

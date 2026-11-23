@@ -1,0 +1,154 @@
+{
+  "files": [
+    {
+      "minecraft": "1.20.1",
+      "artifact": "E:\\模组\\发cf的模组\\Carry On Bug修复\\1.20.1-forge-carry-on-bug-fix\\build\\libs\\carry_on_bug_fix-1.20.1-forge-1.2.0.jar",
+      "sha256": "660c819e98f973b3f6c66c0ca471dc238a0718c9cab43827d93906ac609fad1c",
+      "metadata": {
+        "changelog": "## Carry On Bug Fix 1.2.0\n\nFor Minecraft 1.20.1 (Forge).\n\n- **Direct Boat & Minecart Boarding**: Shift + right-click a boat, chest boat, or rideable minecart (or a passenger already inside) while carrying a mob, passenger stack, or player to seat them directly inside. Respects vanilla seat limits and size checks, prevents vehicle nesting, rolls back cleanly on failure, and prevents the player from accidentally mounting.\n- **Portable Playing Jukebox**: Picking up a playing jukebox keeps the live audio channel playing without restarting, follows the carrier in 3D space with note particles and game events, and seamlessly hands the channel back to the placed block so ejecting or breaking stops playback normally. Late-joining or re-approaching players seek directly to the current playback position.\n- **Blacklist + Whitelist Exceptions**: In Carry On's default blacklist mode, allows whitelist entries (both Carry On's own `allowedBlocks`/`allowedEntities`/`allowedStacking` + `#carryon:*_whitelist` tags and dedicated `blacklistExceptions.*` lists with exact IDs, `*` wildcards, and `#tags`) to override broad blacklists.\n- **Config**: Added `vehicleBoarding.*`, `portableJukebox.*`, and `blacklistExceptions.*` options in `carry_on_bug_fix-common.toml`.\n\n---\n\n## Carry On Bug Fix 1.2.0\n\n适用于 Minecraft 1.20.1（Forge）。\n\n- **抱着生物直接塞进船 / 矿车**：抱着单个生物、乘客叠罗汉或玩家时，潜行右键空船、运输船或普通矿车（或船内已有乘客），即可直接让目标坐入空位。完整遵守原版座位数与体型校验、禁止载具套娃、上车失败自动回滚不丢怪，并阻止玩家自身误上车。\n- **便携移动唱片机（边走边放歌 + 放下无缝续播）**：抱起播放中的唱片机后原活体声道不断点继续播放，声源随搬运者实时 3D 跟随并周期产生音符粒子与游戏事件，放下后无缝交接回原版方块播放表（退盘或挖掉正常停歌）；中途靠近或跨维度玩家会按精确进度自动跳转续播。\n- **黑名单 + 白名单豁免共存**：在 Carry On 默认黑名单模式下，允许白名单作为黑名单例外放行（同时支持直接复用 Carry On 自带 `allowedBlocks`/`allowedEntities`/`allowedStacking` 与 `#carryon:*_whitelist` 标签，以及本模组独立 `blacklistExceptions.*` 精确 ID、`*` 通配符、`#标签` 列表）。\n- **新增配置**：在 `carry_on_bug_fix-common.toml` 中新增 `vehicleBoarding.*`、`portableJukebox.*`、`blacklistExceptions.*` 独立配置项。\n",
+        "changelogType": "markdown",
+        "displayName": "1.20.1-Forge-Carry On Bug Fix-1.2.0",
+        "releaseType": "release",
+        "gameVersions": [
+          9990,
+          7498,
+          9638,
+          9639,
+          8326
+        ],
+        "relations": {
+          "projects": [
+            {
+              "slug": "carry-on",
+              "type": "requiredDependency"
+            },
+            {
+              "slug": "carry-on-extend",
+              "type": "optionalDependency"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "minecraft": "1.21.1",
+      "artifact": "E:\\模组\\发cf的模组\\Carry On Bug修复\\1.21.1-neoforge-carry-on-bug-fix\\build\\libs\\carry_on_bug_fix-1.21.1-neoforge-1.2.0.jar",
+      "sha256": "802dbdf32df8b91457be6c9b36e6cb99a9ad66167b7a172272d74af4805d393b",
+      "metadata": {
+        "changelog": "## Carry On Bug Fix 1.2.0\n\nFor Minecraft 1.21.1 (NeoForge).\n\n- **Direct Boat & Minecart Boarding**: Shift + right-click a boat, chest boat, or rideable minecart (or a passenger already inside) while carrying a mob, passenger stack, or player to seat them directly inside. Respects vanilla seat limits and size checks, prevents vehicle nesting, rolls back cleanly on failure, and prevents the player from accidentally mounting.\n- **Portable Playing Jukebox**: Picking up a playing jukebox keeps the live audio channel playing without restarting, follows the carrier in 3D space with note particles and game events, and seamlessly hands the channel back to the placed block so ejecting or breaking stops playback normally. Late-joining or re-approaching players seek directly to the current playback position.\n- **Blacklist + Whitelist Exceptions**: In Carry On's default blacklist mode, allows whitelist entries (both Carry On's own `allowedBlocks`/`allowedEntities`/`allowedStacking` + `#carryon:*_whitelist` tags and dedicated `blacklistExceptions.*` lists with exact IDs, `*` wildcards, and `#tags`) to override broad blacklists.\n- **Config**: Added `vehicleBoarding.*`, `portableJukebox.*`, and `blacklistExceptions.*` options in `carry_on_bug_fix-common.toml`.\n\n---\n\n## Carry On Bug Fix 1.2.0\n\n适用于 Minecraft 1.21.1（NeoForge）。\n\n- **抱着生物直接塞进船 / 矿车**：抱着单个生物、乘客叠罗汉或玩家时，潜行右键空船、运输船或普通矿车（或船内已有乘客），即可直接让目标坐入空位。完整遵守原版座位数与体型校验、禁止载具套娃、上车失败自动回滚不丢怪，并阻止玩家自身误上车。\n- **便携移动唱片机（边走边放歌 + 放下无缝续播）**：抱起播放中的唱片机后原活体声道不断点继续播放，声源随搬运者实时 3D 跟随并周期产生音符粒子与游戏事件，放下后无缝交接回原版方块播放表（退盘或挖掉正常停歌）；中途靠近或跨维度玩家会按精确进度自动跳转续播。\n- **黑名单 + 白名单豁免共存**：在 Carry On 默认黑名单模式下，允许白名单作为黑名单例外放行（同时支持直接复用 Carry On 自带 `allowedBlocks`/`allowedEntities`/`allowedStacking` 与 `#carryon:*_whitelist` 标签，以及本模组独立 `blacklistExceptions.*` 精确 ID、`*` 通配符、`#标签` 列表）。\n- **新增配置**：在 `carry_on_bug_fix-common.toml` 中新增 `vehicleBoarding.*`、`portableJukebox.*`、`blacklistExceptions.*` 独立配置项。\n",
+        "changelogType": "markdown",
+        "displayName": "1.21.1-NeoForge-Carry On Bug Fix-1.2.0",
+        "releaseType": "release",
+        "gameVersions": [
+          11779,
+          10150,
+          9638,
+          9639,
+          11135
+        ],
+        "relations": {
+          "projects": [
+            {
+              "slug": "carry-on",
+              "type": "requiredDependency"
+            },
+            {
+              "slug": "carry-on-extend",
+              "type": "optionalDependency"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "minecraft": "26.1.2",
+      "artifact": "E:\\模组\\发cf的模组\\Carry On Bug修复\\26.1.2-neoforge-carry-on-bug-fix\\build\\libs\\carry_on_bug_fix-26.1.2-neoforge-1.2.0.jar",
+      "sha256": "5e3413ece73f6429a01c5b00220a7438ff943c9596bab39400b25d6705daaa6f",
+      "metadata": {
+        "changelog": "## Carry On Bug Fix 1.2.0\n\nFor Minecraft 26.1.2 (NeoForge).\n\n- **Direct Boat & Minecart Boarding**: Shift + right-click a boat, chest boat, or rideable minecart (or a passenger already inside) while carrying a mob, passenger stack, or player to seat them directly inside. Respects vanilla seat limits and size checks, prevents vehicle nesting, rolls back cleanly on failure, and prevents the player from accidentally mounting.\n- **Portable Playing Jukebox**: Picking up a playing jukebox keeps the live audio channel playing without restarting, follows the carrier in 3D space with note particles and game events, and seamlessly hands the channel back to the placed block so ejecting or breaking stops playback normally. Late-joining or re-approaching players seek directly to the current playback position. Includes pre-removal pickup claim sync and dual-side stop suppression so picked-up jukeboxes never cut out when the block is removed.\n- **Blacklist + Whitelist Exceptions**: In Carry On's default blacklist mode, allows whitelist entries (both Carry On's own `allowedBlocks`/`allowedEntities`/`allowedStacking` + `#carryon:*_whitelist` tags and dedicated `blacklistExceptions.*` lists with exact IDs, `*` wildcards, and `#tags`) to override broad blacklists.\n- **Config**: Added `vehicleBoarding.*`, `portableJukebox.*`, and `blacklistExceptions.*` options in `carry_on_bug_fix-common.toml`.\n\n---\n\n## Carry On Bug Fix 1.2.0\n\n适用于 Minecraft 26.1.2（NeoForge）。\n\n- **抱着生物直接塞进船 / 矿车**：抱着单个生物、乘客叠罗汉或玩家时，潜行右键空船、运输船或普通矿车（或船内已有乘客），即可直接让目标坐入空位。完整遵守原版座位数与体型校验、禁止载具套娃、上车失败自动回滚不丢怪，并阻止玩家自身误上车。\n- **便携移动唱片机（边走边放歌 + 放下无缝续播）**：抱起播放中的唱片机后原活体声道不断点继续播放，声源随搬运者实时 3D 跟随并周期产生音符粒子与游戏事件，放下后无缝交接回原版方块播放表（退盘或挖掉正常停歌）；中途靠近或跨维度玩家会按精确进度自动跳转续播。 额外加入先序预认领同步包与双端停歌抑制，确保原版移除方块时不会提前切断正在播放的声道。\n- **黑名单 + 白名单豁免共存**：在 Carry On 默认黑名单模式下，允许白名单作为黑名单例外放行（同时支持直接复用 Carry On 自带 `allowedBlocks`/`allowedEntities`/`allowedStacking` 与 `#carryon:*_whitelist` 标签，以及本模组独立 `blacklistExceptions.*` 精确 ID、`*` 通配符、`#标签` 列表）。\n- **新增配置**：在 `carry_on_bug_fix-common.toml` 中新增 `vehicleBoarding.*`、`portableJukebox.*`、`blacklistExceptions.*` 独立配置项。\n",
+        "changelogType": "markdown",
+        "displayName": "26.1.2-NeoForge-Carry On Bug Fix-1.2.0",
+        "releaseType": "release",
+        "gameVersions": [
+          16082,
+          10150,
+          9638,
+          9639,
+          14454
+        ],
+        "relations": {
+          "projects": [
+            {
+              "slug": "carry-on",
+              "type": "requiredDependency"
+            },
+            {
+              "slug": "carry-on-extend",
+              "type": "optionalDependency"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "minecraft": "26.2",
+      "artifact": "E:\\模组\\发cf的模组\\Carry On Bug修复\\26.2-neoforge-carry-on-bug-fix\\build\\libs\\carry_on_bug_fix-26.2-neoforge-1.2.0.jar",
+      "sha256": "780eb91cf5c8fe6e06563693426cb1352bfa6b35467abfcf8287a9d86b6ca040",
+      "metadata": {
+        "changelog": "## Carry On Bug Fix 1.2.0\n\nFor Minecraft 26.2 (NeoForge).\n\n- **Direct Boat & Minecart Boarding**: Shift + right-click a boat, chest boat, or rideable minecart (or a passenger already inside) while carrying a mob, passenger stack, or player to seat them directly inside. Respects vanilla seat limits and size checks, prevents vehicle nesting, rolls back cleanly on failure, and prevents the player from accidentally mounting.\n- **Portable Playing Jukebox**: Picking up a playing jukebox keeps the live audio channel playing without restarting, follows the carrier in 3D space with note particles and game events, and seamlessly hands the channel back to the placed block so ejecting or breaking stops playback normally. Late-joining or re-approaching players seek directly to the current playback position. Includes pre-removal pickup claim sync and dual-side stop suppression so picked-up jukeboxes never cut out when the block is removed.\n- **Blacklist + Whitelist Exceptions**: In Carry On's default blacklist mode, allows whitelist entries (both Carry On's own `allowedBlocks`/`allowedEntities`/`allowedStacking` + `#carryon:*_whitelist` tags and dedicated `blacklistExceptions.*` lists with exact IDs, `*` wildcards, and `#tags`) to override broad blacklists.\n- **Config**: Added `vehicleBoarding.*`, `portableJukebox.*`, and `blacklistExceptions.*` options in `carry_on_bug_fix-common.toml`.\n\n---\n\n## Carry On Bug Fix 1.2.0\n\n适用于 Minecraft 26.2（NeoForge）。\n\n- **抱着生物直接塞进船 / 矿车**：抱着单个生物、乘客叠罗汉或玩家时，潜行右键空船、运输船或普通矿车（或船内已有乘客），即可直接让目标坐入空位。完整遵守原版座位数与体型校验、禁止载具套娃、上车失败自动回滚不丢怪，并阻止玩家自身误上车。\n- **便携移动唱片机（边走边放歌 + 放下无缝续播）**：抱起播放中的唱片机后原活体声道不断点继续播放，声源随搬运者实时 3D 跟随并周期产生音符粒子与游戏事件，放下后无缝交接回原版方块播放表（退盘或挖掉正常停歌）；中途靠近或跨维度玩家会按精确进度自动跳转续播。 额外加入先序预认领同步包与双端停歌抑制，确保原版移除方块时不会提前切断正在播放的声道。\n- **黑名单 + 白名单豁免共存**：在 Carry On 默认黑名单模式下，允许白名单作为黑名单例外放行（同时支持直接复用 Carry On 自带 `allowedBlocks`/`allowedEntities`/`allowedStacking` 与 `#carryon:*_whitelist` 标签，以及本模组独立 `blacklistExceptions.*` 精确 ID、`*` 通配符、`#标签` 列表）。\n- **新增配置**：在 `carry_on_bug_fix-common.toml` 中新增 `vehicleBoarding.*`、`portableJukebox.*`、`blacklistExceptions.*` 独立配置项。\n",
+        "changelogType": "markdown",
+        "displayName": "26.2-NeoForge-Carry On Bug Fix-1.2.0",
+        "releaseType": "release",
+        "gameVersions": [
+          16498,
+          10150,
+          9638,
+          9639,
+          14454
+        ],
+        "relations": {
+          "projects": [
+            {
+              "slug": "carry-on",
+              "type": "requiredDependency"
+            },
+            {
+              "slug": "carry-on-extend",
+              "type": "optionalDependency"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "minecraft": "26.3",
+      "artifact": "E:\\模组\\发cf的模组\\Carry On Bug修复\\26.3-neoforge-carry-on-bug-fix\\build\\libs\\carry_on_bug_fix-26.3-neoforge-1.2.0.jar",
+      "sha256": "b29e2e39ea74e9dd3934ffca42f8eb238a710fe68112592510aa17edc31e4bc2",
+      "metadata": {
+        "changelog": "## Carry On Bug Fix 1.2.0\n\nFor Minecraft 26.3 (NeoForge).\n\n- **Direct Boat & Minecart Boarding**: Shift + right-click a boat, chest boat, or rideable minecart (or a passenger already inside) while carrying a mob, passenger stack, or player to seat them directly inside. Respects vanilla seat limits and size checks, prevents vehicle nesting, rolls back cleanly on failure, and prevents the player from accidentally mounting.\n- **Portable Playing Jukebox**: Picking up a playing jukebox keeps the live audio channel playing without restarting, follows the carrier in 3D space with note particles and game events, and seamlessly hands the channel back to the placed block so ejecting or breaking stops playback normally. Late-joining or re-approaching players seek directly to the current playback position. Includes pre-removal pickup claim sync and dual-side stop suppression so picked-up jukeboxes never cut out when the block is removed.\n- **Blacklist + Whitelist Exceptions**: In Carry On's default blacklist mode, allows whitelist entries (both Carry On's own `allowedBlocks`/`allowedEntities`/`allowedStacking` + `#carryon:*_whitelist` tags and dedicated `blacklistExceptions.*` lists with exact IDs, `*` wildcards, and `#tags`) to override broad blacklists.\n- **Config**: Added `vehicleBoarding.*`, `portableJukebox.*`, and `blacklistExceptions.*` options in `carry_on_bug_fix-local.toml`.\n\n---\n\n## Carry On Bug Fix 1.2.0\n\n适用于 Minecraft 26.3（NeoForge）。\n\n- **抱着生物直接塞进船 / 矿车**：抱着单个生物、乘客叠罗汉或玩家时，潜行右键空船、运输船或普通矿车（或船内已有乘客），即可直接让目标坐入空位。完整遵守原版座位数与体型校验、禁止载具套娃、上车失败自动回滚不丢怪，并阻止玩家自身误上车。\n- **便携移动唱片机（边走边放歌 + 放下无缝续播）**：抱起播放中的唱片机后原活体声道不断点继续播放，声源随搬运者实时 3D 跟随并周期产生音符粒子与游戏事件，放下后无缝交接回原版方块播放表（退盘或挖掉正常停歌）；中途靠近或跨维度玩家会按精确进度自动跳转续播。 额外加入先序预认领同步包与双端停歌抑制，确保原版移除方块时不会提前切断正在播放的声道。\n- **黑名单 + 白名单豁免共存**：在 Carry On 默认黑名单模式下，允许白名单作为黑名单例外放行（同时支持直接复用 Carry On 自带 `allowedBlocks`/`allowedEntities`/`allowedStacking` 与 `#carryon:*_whitelist` 标签，以及本模组独立 `blacklistExceptions.*` 精确 ID、`*` 通配符、`#标签` 列表）。\n- **新增配置**：在 `carry_on_bug_fix-local.toml` 中新增 `vehicleBoarding.*`、`portableJukebox.*`、`blacklistExceptions.*` 独立配置项。\n",
+        "changelogType": "markdown",
+        "displayName": "26.3-NeoForge-Carry On Bug Fix-1.2.0",
+        "releaseType": "release",
+        "gameVersions": [
+          17045,
+          10150,
+          9638,
+          9639,
+          14454
+        ],
+        "relations": {
+          "projects": [
+            {
+              "slug": "carry-on",
+              "type": "requiredDependency"
+            },
+            {
+              "slug": "carry-on-extend",
+              "type": "optionalDependency"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

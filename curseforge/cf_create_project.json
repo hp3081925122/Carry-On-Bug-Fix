@@ -1,6 +1,6 @@
 {
   "name": "Carry On Bug Fix",
-  "summary": "A Carry On addon that carries an entity together with everything riding it, so passengers are no longer left behind or lost, while Carry On's pickup rules still apply to every passenger.",
+  "summary": "A Carry On addon that carries riding groups together, lets you board carried mobs straight into boats/minecarts, keeps picked-up jukeboxes playing seamlessly, and supports whitelist exceptions in blacklist mode.",
   "license": "All Rights Reserved",
   "distribution": "Allow distribution to 3rd party",
   "allowComments": true,

@@ -1,0 +1,16 @@
+{
+  "startedUtc": "2026-11-10T15:50:37.885002+00:00",
+  "sha256": "11d55df98ee54a1ba9ee61518569ea8e8726fa52b1bdf366ee67fe0ae3ff0306",
+  "metadata": {
+    "changelog": "## Carry On Bug Fix 1.1.0\n\nFor Minecraft 1.21.1 (NeoForge).\n\n- Optional compatibility with Carry On Extend. Throwing a carried group with Shift+Q keeps every passenger on the vehicle.\n- Throw power only changes speed. It does not remove passengers.\n- If Carry On Extend is not installed, carrying behavior is unchanged.\n\n---\n\n## Carry On Bug Fix 1.1.0\n\n适用于 Minecraft 1.21.1（NeoForge）。\n\n- 可选兼容 Carry On Extend。用 Shift+Q 扔出一整组时，乘客会留在载具上。\n- 投掷力度只改变速度，不会把乘客丢掉。\n- 未安装 Carry On Extend 时，搬运行为不变。\n",
+    "changelogType": "markdown",
+    "displayName": "1.21.1-NeoForge-Carry On Bug Fix-1.1.0",
+    "releaseType": "release",
+    "gameVersionNames": [
+      "1.21.1",
+      "NeoForge",
+      "Client",
+      "Server"
+    ]
+  }
+}

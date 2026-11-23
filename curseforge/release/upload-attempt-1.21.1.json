@@ -1,0 +1,16 @@
+{
+  "startedUtc": "2026-11-07T14:14:11.267950+00:00",
+  "sha256": "72cd5553db4946624f38eb018c497bfbb0aecc5996614b0f6220c6e8b3f5d9c8",
+  "metadata": {
+    "changelog": "## Carry On Bug Fix 1.0.0\n\nFirst release, for Minecraft 1.21.1 (NeoForge).\n\n- Carries a vehicle and everything riding it as one group, so passengers are no longer left behind or lost.\n- Clicking any passenger picks up the whole group from its bottom vehicle.\n- Placing, stacking onto another entity, and the death drop restore the whole group with every passenger still riding.\n- The carried entity is drawn with all of its passengers in first and third person.\n- Carry On's pickup rules (owner check, blacklist, baby exception, hostile mob and size limits, script and pickup conditions) apply to every passenger; one refused passenger refuses the whole group.\n- Groups containing a player or an entity that cannot be saved are refused instead of being deleted.\n- Stacking limits count the total size of both groups.\n- Config in `carry_on_bug_fix-common.toml`: `passengerStack.enabled`, `passengerStack.maxDepth` (1-3), `passengerStack.maxEntities` (1-8).\n\n---\n\n## Carry On Bug Fix 1.0.0（首次发布）\n\n适用于 Minecraft 1.21.1（NeoForge）。\n\n- 抱起一个有乘客的实体时，载具和上面骑乘的所有实体作为一整组一起搬走，乘客不会再被留在原地或直接丢失。\n- 点击组里的任意乘客，都会从最底下的载具开始把整组抱起来。\n- 放下、叠到其他实体上、死亡掉落时，整组都会还原，乘客仍然骑在原来的位置上。\n- 第一人称和第三人称下，手里的实体都会连同全部乘客一起显示。\n- Carry On 的拾取规则（主人检查、拾取黑名单、幼体例外、敌对生物与体型限制、脚本条件、拾取条件）对每个乘客生效；只要有一个乘客被拒绝，整组都抱不起来。\n- 组里有玩家或无法保存的实体时直接拒绝拾取，不会把它们删掉。\n- 堆叠限制会合计两组的总规模。\n- 配置位于 `carry_on_bug_fix-common.toml`：`passengerStack.enabled`、`passengerStack.maxDepth`（1-3）、`passengerStack.maxEntities`（1-8）。\n",
+    "changelogType": "markdown",
+    "displayName": "1.21.1-NeoForge-Carry On Bug Fix-1.0.0",
+    "releaseType": "release",
+    "gameVersionNames": [
+      "1.21.1",
+      "NeoForge",
+      "Client",
+      "Server"
+    ]
+  }
+}

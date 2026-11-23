@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "org.hp.carryonbugfix.mixin",
+  "plugin": "org.hp.carryonbugfix.CarryOnExtendMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CommonEventsMixin",
+    "EntityThrowHandlerMixin",
+    "PickupHandlerMixin",
+    "PlacementHandlerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "CarriedObjectRenderMixin"
+  ]
+}

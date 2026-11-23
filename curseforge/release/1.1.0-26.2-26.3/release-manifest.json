@@ -1,0 +1,28 @@
+{
+  "files": [
+    {
+      "minecraft": "26.2",
+      "artifact": "E:\\模组\\发cf的模组\\Carry On Bug修复\\26.2-neoforge-carry-on-bug-fix\\build\\libs\\carry_on_bug_fix-26.2-neoforge-1.1.0.jar",
+      "sha256": "17d3977b2a1b1d3ea4427a43edb9fa9caee4ab9f70ed21503263377f04077c45",
+      "metadata": {
+        "changelog": "## Carry On Bug Fix 1.1.0\n\nInitial release for Minecraft 26.2 (NeoForge).\n\n- Carries a vehicle and everything riding it as one group, so passengers are no longer left behind or lost.\n- Clicking any passenger picks up the whole group from its bottom vehicle.\n- Placing, stacking onto another entity, and the death drop restore the whole group with every passenger still riding.\n- Renders all carried passengers in first and third person with Minecraft 26.2 / Carry On 2.11.x entity rendering and caching.\n- Applies Carry On's pickup rules (owner check, blacklist, baby exception, hostile mob and size limits, script and pickup conditions) to every passenger.\n- Refuses groups containing a player, non-serializable entities, or stacks exceeding configured depth/entity limits.\n- Optional compatibility with Carry On Extend so throwing a carried group preserves all passengers.\n- Config in `carry_on_bug_fix-common.toml`: `passengerStack.enabled`, `passengerStack.maxDepth` (1-3), `passengerStack.maxEntities` (1-8).\n\n---\n\n## Carry On Bug Fix 1.1.0\n\nMinecraft 26.2（NeoForge）首个发布版本。\n\n- 抱起带有乘客的载具或实体时，将载具与全部乘客作为一整组一起搬运，避免乘客留在原地或丢失。\n- 点击乘骑关系中的任意乘客时，自动从最底层载具开始整组抱起。\n- 放下、堆叠到其他实体上、以及死亡放置时，递归恢复整组实体并保持原有乘骑关系。\n- 适配 Minecraft 26.2 与 Carry On 2.11.x 渲染与缓存机制，第一人称与第三人称均稳定渲染全部手持乘客。\n- 对全部乘客执行 Carry On 拾取规则校验（主人检查、黑名单与幼体例外、敌对生物与体型限制、脚本与拾取条件）。\n- 组内包含玩家、不可保存实体，或超出配置层数/数量上限时拒绝操作，防止破坏原有乘骑结构。\n- 可选兼容 Carry On Extend，投掷整组实体时保留全部乘客。\n- 配置文件位于 `carry_on_bug_fix-common.toml`：`passengerStack.enabled`、`passengerStack.maxDepth`（1-3）、`passengerStack.maxEntities`（1-8）。\n",
+        "changelogType": "markdown",
+        "displayName": "26.2-NeoForge-Carry On Bug Fix-1.1.0",
+        "releaseType": "release",
+        "gameVersionNames": ["26.2", "NeoForge", "Client", "Server"]
+      }
+    },
+    {
+      "minecraft": "26.3",
+      "artifact": "E:\\模组\\发cf的模组\\Carry On Bug修复\\26.3-neoforge-carry-on-bug-fix\\build\\libs\\carry_on_bug_fix-26.3-neoforge-1.1.0.jar",
+      "sha256": "083bd009f35f54139adbaa4e2ee8930fa93132ca11a0cc0f2b8fe0bdf512a645",
+      "metadata": {
+        "changelog": "## Carry On Bug Fix 1.1.0\n\nInitial release for Minecraft 26.3 (NeoForge).\n\n- Carries a vehicle and everything riding it as one group, so passengers are no longer left behind or lost.\n- Clicking any passenger picks up the whole group from its bottom vehicle.\n- Placing, stacking onto another entity, and the death drop restore the whole group with every passenger still riding.\n- Renders all carried passengers in first and third person with Minecraft 26.3 / Carry On 2.12.x entity rendering and caching.\n- Applies Carry On's pickup rules (owner check, blacklist, baby exception, hostile mob and size limits, script and pickup conditions, invulnerable time) to every passenger.\n- Refuses groups containing a player, non-serializable entities, or stacks exceeding configured depth/entity limits.\n- Optional compatibility hook retained for Carry On Extend when available.\n- Config in `carry_on_bug_fix-local.toml`: `passengerStack.enabled`, `passengerStack.maxDepth` (1-3), `passengerStack.maxEntities` (1-8).\n\n---\n\n## Carry On Bug Fix 1.1.0\n\nMinecraft 26.3（NeoForge）首个发布版本。\n\n- 抱起带有乘客的载具或实体时，将载具与全部乘客作为一整组一起搬运，避免乘客留在原地或丢失。\n- 点击乘骑关系中的任意乘客时，自动从最底层载具开始整组抱起。\n- 放下、堆叠到其他实体上、以及死亡放置时，递归恢复整组实体并保持原有乘骑关系。\n- 适配 Minecraft 26.3 与 Carry On 2.12.x 渲染与缓存机制，第一人称与第三人称均稳定渲染全部手持乘客。\n- 对全部乘客执行 Carry On 拾取规则校验（主人检查、黑名单与幼体例外、敌对生物与体型限制、脚本与拾取条件、无敌时间检查）。\n- 组内包含玩家、不可保存实体，或超出配置层数/数量上限时拒绝操作，防止破坏原有乘骑结构。\n- 保留对 Carry On Extend 的可选条件兼容钩子。\n- 配置文件位于 `carry_on_bug_fix-local.toml`：`passengerStack.enabled`、`passengerStack.maxDepth`（1-3）、`passengerStack.maxEntities`（1-8）。\n",
+        "changelogType": "markdown",
+        "displayName": "26.3-NeoForge-Carry On Bug Fix-1.1.0",
+        "releaseType": "release",
+        "gameVersionNames": ["26.3", "NeoForge", "Client", "Server"]
+      }
+    }
+  ]
+}
